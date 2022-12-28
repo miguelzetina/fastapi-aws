@@ -1,5 +1,5 @@
 import datetime
-from app.models.hello_response_models import HelloResponse
+from src.models.hello_response_models import HelloResponse
 
 
 async def resolve_hello_world() -> HelloResponse:

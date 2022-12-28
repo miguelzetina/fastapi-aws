@@ -1,7 +1,7 @@
 import strawberry
 
 from strawberry.asgi import GraphQL
-from app.resolvers.hello.resolve_hello import *
+from src.resolvers.hello.resolve_hello import *
 
 
 @strawberry.type

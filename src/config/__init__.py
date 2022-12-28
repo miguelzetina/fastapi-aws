@@ -3,7 +3,7 @@ from pydantic import BaseSettings
 
 class CommonSettings(BaseSettings):
     APP_NAME: str = "FastAPI GraphQL Starter"
-    DEBUG_MODEL: bool = True
+    DEBUG_MODEL: bool = False
 
 
 class ServerSettings(BaseSettings):
