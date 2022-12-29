@@ -16,6 +16,7 @@ pydantic = {extras= ["dotenv"], version = "^1.10.2"}
 dataclasses-json = "^0.5.7"
 gpl = "^0.1.4"
 strawberry-graphql = {extras = ["debug-server"], version = "^0.151.2"}
+bson = "^0.5.10"
 
 
 [build-system]

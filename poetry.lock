@@ -198,6 +198,21 @@ sentence-transformers = "*"
 tf = ["tensorflow (>=2.2.0)", "tensorflow-hub", "tensorflow-text"]
 
 [[package]]
+name = "bson"
+version = "0.5.10"
+description = "BSON codec for Python"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "bson-0.5.10.tar.gz", hash = "sha256:d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.4.0"
+six = ">=1.9.0"
+
+[[package]]
 name = "certifi"
 version = "2022.12.7"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -2577,4 +2592,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0673c42ed957a9234b5ceeb31620c7493798f966e7b39799101c7afc3ba25b06"
+content-hash = "ec747b8b9bb4a13c231fbce2e4be07aee643c47848219a933fc2122642000a8d"
