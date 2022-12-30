@@ -2,8 +2,19 @@ from __future__ import annotations
 
 from typing import Optional
 
+import strawberry
+
 from dataclasses import dataclass
 from dataclasses_json import LetterCase, dataclass_json
+
+
+@strawberry.input
+@dataclass_json(letter_case=LetterCase.CAMEL)
+@dataclass
+class AuthorInput:
+    first_name: str
+    last_name: str
+    middle_name: Optional[str] = None
 
 
 @strawberry.type
@@ -12,5 +23,5 @@ from dataclasses_json import LetterCase, dataclass_json
 class Author:
     first_name: str
     last_name: str
-    middle_name: Optional[str]: None
+    middle_name: Optional[str] = None
 
