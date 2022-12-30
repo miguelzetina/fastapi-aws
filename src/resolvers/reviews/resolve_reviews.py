@@ -23,3 +23,23 @@ async def resolve_create_review(book_id: str,
 
     return await review_service.create_review(new_review)
 
+
+async def resolve_update_review(review_id: str,
+                                rating: float,
+                                review_comments: str = None) \
+        -> UpdateResponse[Review]:
+    new_values = {}
+
+    if review_comments is not None:
+        new_values['review_comments'] = review_comments
+    if rating is not None:
+        new_values['rating'] = rating
+
+    new_values['lastUpdatedOn'] = datetime.datetime.now()
+
+    return await review_service.update_review(ObjectId(review_id), new_values)
+
+
+async def resolve_delete_review(review_id: str) -> DeleteResponse[Review]:
+    return await review_service.delete_review(ObjectId(review_id))
+

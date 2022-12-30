@@ -27,6 +27,8 @@ class Mutation:
     delete_book = strawberry.mutation(resolve_delete_book)
     # Review Create, Update, and Delete Mutations
     create_review = strawberry.mutation(resolve_create_review)
+    update_review = strawberry.mutation(resolve_update_review)
+    delete_review = strawberry.mutation(resolve_delete_review)
 
 
 schema = strawberry.Schema(query=Query(), mutation=Mutation())
