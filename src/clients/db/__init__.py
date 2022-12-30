@@ -79,3 +79,17 @@ async def delete_all_records(collection:str,
                              query: dict) -> dict:
     return await get_db()[collection].delete_many(query)
 
+
+def build_bulk_avg_value_pipeline(field_to_match: str,
+                                  field_values_to_match: List[object],
+                                  field_to_calculate_average: str) -> List[dict]:
+    return [
+        {'$match': {field_to_match: {"$in": field_values_to_match}}},
+        {'$group':
+            {
+                '_id': '$' + field_to_match,
+                'avg_rating': {'$avg': '$' + field_to_calculate_average}
+            }
+        }
+    ]
+

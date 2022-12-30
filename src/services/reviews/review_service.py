@@ -1,3 +1,5 @@
+import datetime
+
 import strawberry
 from bson import ObjectId
 
@@ -5,6 +7,7 @@ from pymongo.results import InsertOneResult, DeleteResult, UpdateResult
 from src.clients.db import (
     get_record, create_record, delete_record, get_and_update_record
 )
+from src.services.books.book_service import update_book
 from src.models.common.response_models import (
     CreateResponse, GetResponse, DeleteResponse, UpdateResponse
 )
@@ -44,6 +47,9 @@ async def create_review(review: Review) -> CreateResponse[Review]:
             error_message=None,
             success=True
         )
+        await update_book(review.book_id, {"asyncUpdateRequired": True,
+                                           "lastUpdatedOn":
+                                           datetime.datetime.now()})
 
     return review_response
 

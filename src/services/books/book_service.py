@@ -1,16 +1,19 @@
-import strawberry
-from bson import ObjectId
+from typing import List
 
+import strawberry
+
+from bson import ObjectId
 from pymongo.results import DeleteResult, InsertOneResult, UpdateResult
 
 from src.clients.db import (
-    get_record, create_record, get_and_update_record, delete_record
+    get_record, create_record, get_and_update_record, delete_record,
+    get_records, build_bulk_avg_value_pipeline
 )
 from src.models.books.book_models import Book
 from src.models.common.response_models import (
     CreateResponse, DeleteResponse, GetResponse, UpdateResponse
 )
-from src.models.db.db_models import DatabaseCollectionTypes
+from src.models.db.db_models import DatabaseCollectionTypes, BulkRecordUpdateResponse
 
 
 async def get_book_by_id(book_id: strawberry.ID) -> GetResponse[Book]:
@@ -86,4 +89,45 @@ async def delete_book(book_id: strawberry.ID) -> DeleteResponse[Book]:
                                            success=True)
 
     return delete_response
+
+
+async def get_books_to_update() -> List[str]:
+    result = await get_records(
+        DatabaseCollectionTypes.BOOKS.value,
+        {"asyncUpdateRequired": True}
+    )
+    books = []
+    async for doc in result:
+        books.append(str(doc['_id']))
+
+    return books
+
+
+async def bulk_update_book_ratings() -> BulkRecordUpdateResponse:
+    books = await get_books_to_update()
+    raiting_responses = await get_bulk_avg_reservation_rating_by_book_ids(books)
+
+    bulk_results = []
+    for rating_response in rating_responses:
+        result: UpdateResponse[Book] = await update_book(
+            rating_response['_id'],
+            {
+                'rating': rating_response['avg_rating'],
+                'asyncUpdateRequired': False,
+                'lastUpdatedOn': datetime.datetime.now()
+            }
+        )
+
+        bulk_results.append(result)
+
+    return BulkRecordUpdateResponse(bulk_results)
+
+
+async def get_bulk_avg_reservation_rating_by_book_ids(book_ids: List[str]) -> List[dict]:
+    pipeline = build_bulk_avg_value_pipeline("bookId", book_ids, "rating")
+
+    cursor = await aggregate(DatabaseCollectionTypes.REVIEWS.value, pipeline)
+    results = await cursor.to_list(length=1000)
+
+    return results
 

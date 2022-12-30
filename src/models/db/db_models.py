@@ -49,3 +49,11 @@ class DeleteRecord:
     record_id: str = None
     error_message: str = None
 
+
+@dataclass_json(letter_case=LetterCase.CAMEL)
+@dataclass
+@strawberry.type
+class BulkRecordUpdateResponse:
+    update_responses: List[UpdateRecord]
+    error_message: str = None
+
