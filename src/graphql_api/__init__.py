@@ -6,7 +6,8 @@ from src.resolvers.books.resolve_books import (
     resolve_update_book, resolve_delete_book
 )
 from src.resolvers.reviews.resolve_reviews import (
-    resolve_create_review, resolve_get_review_by_id
+    resolve_create_review, resolve_get_review_by_id, resolve_update_review,
+    resolve_delete_review
 )
 
 
