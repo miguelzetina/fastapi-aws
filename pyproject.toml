@@ -4,7 +4,6 @@ version = "0.1.0"
 description = ""
 authors = ["Miguel Angel Zetina Zetina <miguel.zetina@storicard.com>"]
 readme = "README.md"
-packages = [{include = "fastapi_starter"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
