@@ -458,6 +458,63 @@ publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
+name = "aws-cdk-aws-codebuild"
+version = "1.186.1"
+description = "The CDK Construct Library for AWS::CodeBuild"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-codebuild-1.186.1.tar.gz", hash = "sha256:607168de5b2880e93c38c6a8a11294c6d6347301cea86da485796b54162a8a94"},
+    {file = "aws_cdk.aws_codebuild-1.186.1-py3-none-any.whl", hash = "sha256:fdaa8a0250378a2e4ab4740b01f1e846c14acdf24dc14d31e4d960719d95bfd4"},
+]
+
+[package.dependencies]
+"aws-cdk.assets" = "1.186.1"
+"aws-cdk.aws-cloudwatch" = "1.186.1"
+"aws-cdk.aws-codecommit" = "1.186.1"
+"aws-cdk.aws-codestarnotifications" = "1.186.1"
+"aws-cdk.aws-ec2" = "1.186.1"
+"aws-cdk.aws-ecr" = "1.186.1"
+"aws-cdk.aws-ecr-assets" = "1.186.1"
+"aws-cdk.aws-events" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-kms" = "1.186.1"
+"aws-cdk.aws-logs" = "1.186.1"
+"aws-cdk.aws-s3" = "1.186.1"
+"aws-cdk.aws-s3-assets" = "1.186.1"
+"aws-cdk.aws-secretsmanager" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+"aws-cdk.region-info" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
+name = "aws-cdk-aws-codecommit"
+version = "1.186.1"
+description = "The CDK Construct Library for AWS::CodeCommit"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-codecommit-1.186.1.tar.gz", hash = "sha256:690ce2df0c8e6f6c37fb99a780adc9f5843a164db0034d4a777d66163c69cf9c"},
+    {file = "aws_cdk.aws_codecommit-1.186.1-py3-none-any.whl", hash = "sha256:dd8876ecc18b737bc03e2f5e77a7fb7cfc5b331d24135abdfc7f444b3ab34911"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-codestarnotifications" = "1.186.1"
+"aws-cdk.aws-events" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-s3-assets" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
 name = "aws-cdk-aws-codeguruprofiler"
 version = "1.186.1"
 description = "The CDK Construct Library for AWS::CodeGuruProfiler"
@@ -471,6 +528,30 @@ files = [
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
+name = "aws-cdk-aws-codepipeline"
+version = "1.186.1"
+description = "Better interface to AWS Code Pipeline"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-codepipeline-1.186.1.tar.gz", hash = "sha256:d8c9d15cac3e31d572a348e1f4d59b27a603da5b5f0d0dbcc82bd8cc540a1b2d"},
+    {file = "aws_cdk.aws_codepipeline-1.186.1-py3-none-any.whl", hash = "sha256:a19260097ec7347f0a718c81dd7519b20b6a3dd5094b2161a85ff4229816b28b"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-codestarnotifications" = "1.186.1"
+"aws-cdk.aws-events" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-kms" = "1.186.1"
+"aws-cdk.aws-s3" = "1.186.1"
 "aws-cdk.core" = "1.186.1"
 constructs = ">=3.3.69,<4.0.0"
 jsii = ">=1.72.0,<2.0.0"
@@ -639,6 +720,39 @@ publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
+name = "aws-cdk-aws-ecs-patterns"
+version = "1.186.1"
+description = "The CDK Construct Library for AWS::ECS"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-ecs-patterns-1.186.1.tar.gz", hash = "sha256:abd66c722a1ce7f3795ae3285ef4f09c9dfa8703824b10d97bfe5f11c8a6e4ef"},
+    {file = "aws_cdk.aws_ecs_patterns-1.186.1-py3-none-any.whl", hash = "sha256:9cf6b520822f263f628da7be80fcb8dc4d8a6b651e62772d86e178744a521aec"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-applicationautoscaling" = "1.186.1"
+"aws-cdk.aws-autoscaling" = "1.186.1"
+"aws-cdk.aws-certificatemanager" = "1.186.1"
+"aws-cdk.aws-ec2" = "1.186.1"
+"aws-cdk.aws-ecs" = "1.186.1"
+"aws-cdk.aws-elasticloadbalancingv2" = "1.186.1"
+"aws-cdk.aws-events" = "1.186.1"
+"aws-cdk.aws-events-targets" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-route53" = "1.186.1"
+"aws-cdk.aws-route53-targets" = "1.186.1"
+"aws-cdk.aws-servicediscovery" = "1.186.1"
+"aws-cdk.aws-sqs" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+"aws-cdk.cx-api" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
 name = "aws-cdk-aws-efs"
 version = "1.186.1"
 description = "The CDK Construct Library for AWS::EFS"
@@ -732,6 +846,43 @@ publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
+name = "aws-cdk-aws-events-targets"
+version = "1.186.1"
+description = "Event targets for Amazon EventBridge"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-events-targets-1.186.1.tar.gz", hash = "sha256:59e20a13c802390d72f676f0d328f9a1c546f8f4422676a803b6444d9b432c33"},
+    {file = "aws_cdk.aws_events_targets-1.186.1-py3-none-any.whl", hash = "sha256:e743fe848ff4ac80634ad3075ec409fbd201fd9ffec5a2468971d785ef7f74cd"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-apigateway" = "1.186.1"
+"aws-cdk.aws-autoscaling" = "1.186.1"
+"aws-cdk.aws-codebuild" = "1.186.1"
+"aws-cdk.aws-codepipeline" = "1.186.1"
+"aws-cdk.aws-ec2" = "1.186.1"
+"aws-cdk.aws-ecs" = "1.186.1"
+"aws-cdk.aws-events" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-kinesis" = "1.186.1"
+"aws-cdk.aws-kinesisfirehose" = "1.186.1"
+"aws-cdk.aws-kms" = "1.186.1"
+"aws-cdk.aws-lambda" = "1.186.1"
+"aws-cdk.aws-logs" = "1.186.1"
+"aws-cdk.aws-sns" = "1.186.1"
+"aws-cdk.aws-sns-subscriptions" = "1.186.1"
+"aws-cdk.aws-sqs" = "1.186.1"
+"aws-cdk.aws-stepfunctions" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+"aws-cdk.custom-resources" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
 name = "aws-cdk-aws-globalaccelerator"
 version = "1.186.1"
 description = "The CDK Construct Library for AWS::GlobalAccelerator"
@@ -767,6 +918,57 @@ files = [
 [package.dependencies]
 "aws-cdk.core" = "1.186.1"
 "aws-cdk.cx-api" = "1.186.1"
+"aws-cdk.region-info" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
+name = "aws-cdk-aws-kinesis"
+version = "1.186.1"
+description = "The CDK Construct Library for AWS::Kinesis"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-kinesis-1.186.1.tar.gz", hash = "sha256:80fd6340a9f9fc28d695a8e0b317f7899eebd2df869f72cd10a882b684243fe5"},
+    {file = "aws_cdk.aws_kinesis-1.186.1-py3-none-any.whl", hash = "sha256:f11c43a6a8b6f3ee8ace783b4ee065629d28e16c3d0177e25bb1317ad8d295c3"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-cloudwatch" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-kms" = "1.186.1"
+"aws-cdk.aws-logs" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
+constructs = ">=3.3.69,<4.0.0"
+jsii = ">=1.72.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
+name = "aws-cdk-aws-kinesisfirehose"
+version = "1.186.1"
+description = "The CDK Construct Library for AWS::KinesisFirehose"
+category = "main"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "aws-cdk.aws-kinesisfirehose-1.186.1.tar.gz", hash = "sha256:f37b583182721ef37a83433705a66b1e9645b8e581012d2dc59ce872f459eeb1"},
+    {file = "aws_cdk.aws_kinesisfirehose-1.186.1-py3-none-any.whl", hash = "sha256:ef6c861adc1c83a5b79859d171f589099412e31562161d16a767ab479224a6fa"},
+]
+
+[package.dependencies]
+"aws-cdk.aws-cloudwatch" = "1.186.1"
+"aws-cdk.aws-ec2" = "1.186.1"
+"aws-cdk.aws-iam" = "1.186.1"
+"aws-cdk.aws-kinesis" = "1.186.1"
+"aws-cdk.aws-kms" = "1.186.1"
+"aws-cdk.aws-lambda" = "1.186.1"
+"aws-cdk.aws-logs" = "1.186.1"
+"aws-cdk.aws-s3" = "1.186.1"
+"aws-cdk.core" = "1.186.1"
 "aws-cdk.region-info" = "1.186.1"
 constructs = ">=3.3.69,<4.0.0"
 jsii = ">=1.72.0,<2.0.0"
@@ -3893,4 +4095,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7bf3588492fcde06451156e70e880589c7945ddb1e0ed849e4dad86262a9b677"
+content-hash = "3655669e0c0b2fb887379f216289a3cac521999489575f7dcbd4c35b5251ad7d"

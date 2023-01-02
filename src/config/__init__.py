@@ -16,7 +16,14 @@ class DatabaseSettings(BaseSettings):
     DB_NAME: str = ''
 
 
-class Settings(CommonSettings, DatabaseSettings, ServerSettings):
+class InfrastructureSettings(BaseSettings):
+    AWS_ACCOUNT: str = ""
+    AWS_REGION: str = ""
+    ENV_TYPE: str = "dev"
+
+
+class Settings(CommonSettings, DatabaseSettings, ServerSettings,
+               InfrastructureSettings):
     class Config:
         env_file = '.env'
         env_file_encoding = 'utf-8'
