@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi_utils.tasks import repeat_every
 import uvicorn, datetime
 
@@ -9,6 +10,17 @@ from src.jobs.book_ratings_job import update_average_book_ratings
 
 app = FastAPI()
 app.mount('/graph', graphql_app)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'], # Specify this to lock down further
+    allow_credentials=False, # Must be false if all origins (*) is allowed
+    allow_methods=['*'],
+    allow_headers=[
+        'X-Forwarded-For',
+        'Authorization',
+        'Content-Type',
+    ],
+)
 
 
 @app.on_event('startup')
