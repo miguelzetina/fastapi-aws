@@ -2,7 +2,7 @@ from pydantic import BaseSettings
 
 
 class CommonSettings(BaseSettings):
-    APP_NAME: str = "FastAPI GraphQL Starter"
+    APP_NAME: str = "Book API"
     DEBUG_MODEL: bool = False
 
 
