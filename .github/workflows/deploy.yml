@@ -15,7 +15,7 @@ env:
   CDK_VERSION: 2.50.0
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   DOMAIN_NAME: ${{ secrets.DOMAIN_NAME }}
-  IMAGE_TYPE: bookapi
+  IMAGE_NAME: bookapi
   ENV_TYPE: dev
 
 jobs:
@@ -57,9 +57,9 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
         run: |
-          docker build -t ${{env.IMAGE_NAME}} -f Dockerfile .
-          docker tag ${{env.IMAGE_NAME}}:latest ${{env.ECR_REPOSITORY}}
-          docker push ${{env.ECR_REPOSITORY}}:latest
+          docker build -t ${{ env.IMAGE_NAME }} -f Dockerfile .
+          docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.ECR_REPOSITORY }}
+          docker push ${{ env.ECR_REPOSITORY }}:latest
       - name: Deploy AWS Infrastructure Changes
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -67,6 +67,6 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
         run: |
-          cdk bootstrap aws://${{env.AWS_ACCOUNT}}/${{env.AWS_REGION}}
+          cdk bootstrap aws://${{ env.AWS_ACCOUNT }}/${{ env.AWS_REGION }}
           cdk synth && cdk diff
           cdk deploy --require-approval never # uncomment this line to deploy to AWS
