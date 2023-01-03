@@ -1,4 +1,4 @@
-FROM python:3.10.8
+FROM python:3.10.9-bullseye
 
 # Install Environment Dependencies
 RUN pip install fastapi uvicorn poetry wheel virtualenv
