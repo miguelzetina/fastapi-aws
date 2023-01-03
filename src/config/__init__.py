@@ -20,6 +20,7 @@ class InfrastructureSettings(BaseSettings):
     AWS_ACCOUNT: str = ""
     AWS_REGION: str = ""
     ENV_TYPE: str = "dev"
+    DOMAIN_NAME: str = ""
 
 
 class Settings(CommonSettings, DatabaseSettings, ServerSettings,
