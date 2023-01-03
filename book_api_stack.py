@@ -31,7 +31,7 @@ class ContainerizedGraphQLAPIStack(Stack):
 
         # User the bookapi image from private book-api ECR repository
         repo = _ecr.Repository.from_repository_name(self, f"{image_name}",
-                                                    repository_name=f"api_name")
+                                                    repository_name=f"{api_name}")
 
         image = _ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
             image=_ecs.EcrImage.from_ecr_repository(repository=repo),
