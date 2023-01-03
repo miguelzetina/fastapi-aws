@@ -4,9 +4,8 @@ import strawberry
 from bson import ObjectId
 
 from pymongo.results import InsertOneResult, DeleteResult, UpdateResult
-from src.clients.db import (
-    get_record, create_record, delete_record, get_and_update_record
-)
+
+from src.clients.db import MongoClient
 from src.services.books.book_service import update_book
 from src.models.common.response_models import (
     CreateResponse, GetResponse, DeleteResponse, UpdateResponse
@@ -15,8 +14,11 @@ from src.models.db.db_models import DatabaseCollectionTypes
 from src.models.reviews.review_models import Review
 
 
+db_client = MongoClient()
+
+
 async def get_review_by_id(review_id: strawberry.ID) ->GetResponse[Review]:
-    result = await get_record(
+    result = await db_client.get_record(
         DatabaseCollectionTypes.REVIEWS.value,
         {"_id": ObjectId(review_id)}
     )
@@ -30,7 +32,7 @@ async def get_review_by_id(review_id: strawberry.ID) ->GetResponse[Review]:
 
 async def create_review(review: Review) -> CreateResponse[Review]:
     new_review = review.to_dict()
-    result: InsertOneResult = await create_record(
+    result: InsertOneResult = await db_client.create_record(
         DatabaseCollectionTypes.REVIEWS.value,
         new_review
     )
@@ -56,7 +58,7 @@ async def create_review(review: Review) -> CreateResponse[Review]:
 
 async def update_review(review_id: strawberry.ID,
                         updated_review: dict) -> UpdateResponse[Review]:
-    result: UpdateResult = await get_and_update_record(
+    result: UpdateResult = await db_client.get_and_update_record(
         DatabaseCollectionTypes.REVIEWS.value,
         {"_id": ObjectId(review_id)},
         {"$set": updated_review}
@@ -79,7 +81,7 @@ async def update_review(review_id: strawberry.ID,
 
 
 async def delete_review(review_id: strawberry.ID) -> DeleteResponse[Review]:
-    delete_result: DeleteResult = await delete_record(
+    delete_result: DeleteResult = await db_client.delete_record(
         DatabaseCollectionTypes.REVIEWS.value,
         {"_id": review_id}
     )
@@ -92,4 +94,3 @@ async def delete_review(review_id: strawberry.ID) -> DeleteResponse[Review]:
     )
 
     return delete_response
-

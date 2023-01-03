@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 import strawberry
@@ -5,10 +6,7 @@ import strawberry
 from bson import ObjectId
 from pymongo.results import DeleteResult, InsertOneResult, UpdateResult
 
-from src.clients.db import (
-    get_record, create_record, get_and_update_record, delete_record,
-    get_records, build_bulk_avg_value_pipeline
-)
+from src.clients.db import MongoClient
 from src.models.books.book_models import Book
 from src.models.common.response_models import (
     CreateResponse, DeleteResponse, GetResponse, UpdateResponse
@@ -16,8 +14,11 @@ from src.models.common.response_models import (
 from src.models.db.db_models import DatabaseCollectionTypes, BulkRecordUpdateResponse
 
 
+db_client = MongoClient()
+
+
 async def get_book_by_id(book_id: strawberry.ID) -> GetResponse[Book]:
-    result = await get_record(DatabaseCollectionTypes.BOOKS.value,
+    result = await db_client.get_record(DatabaseCollectionTypes.BOOKS.value,
                               {"_id": ObjectId(book_id)})
 
     return GetResponse[Book](result=Book.from_dict(result),
@@ -26,7 +27,7 @@ async def get_book_by_id(book_id: strawberry.ID) -> GetResponse[Book]:
 
 
 async def get_book_by_isbn(isbn: str) -> GetResponse[Book]:
-    result = await get_record(DatabaseCollectionTypes.BOOKS.value, {"isbn":
+    result = await db_client.get_record(DatabaseCollectionTypes.BOOKS.value, {"isbn":
                                                                     isbn})
     return GetResponse[Book](result=Book.form_dict(result), error_message=None,
                              success=True)
@@ -34,7 +35,7 @@ async def get_book_by_isbn(isbn: str) -> GetResponse[Book]:
 
 async def create_book(book: Book) -> CreateResponse:
     new_book = book.to_dict()
-    result: InsertOneResult = await create_record(
+    result: InsertOneResult = await db_client.create_record(
         DatabaseCollectionTypes.BOOKS.value,
         new_book
     )
@@ -57,7 +58,7 @@ async def create_book(book: Book) -> CreateResponse:
 async def update_book(book_id: strawberry.ID,
                       updated_book: dict) ->UpdateResponse[Book]:
 
-    result: UpdateResult = await get_and_update_record(
+    result: UpdateResult = await db_client.get_and_update_record(
         DatabaseCollectionTypes.BOOKS.value,
         {"_id": ObjectId(book_id)},
         {"$set": updated_book}
@@ -78,7 +79,7 @@ async def update_book(book_id: strawberry.ID,
 
 
 async def delete_book(book_id: strawberry.ID) -> DeleteResponse[Book]:
-    delete_result: DeleteResult = await delete_record(
+    delete_result: DeleteResult = await db_client.delete_record(
         DatabaseCollectionTypes.BOOKS.value,
         {"_id": ObjectId(book_id)}
     )
@@ -92,7 +93,7 @@ async def delete_book(book_id: strawberry.ID) -> DeleteResponse[Book]:
 
 
 async def get_books_to_update() -> List[str]:
-    result = await get_records(
+    result = await db_client.get_records(
         DatabaseCollectionTypes.BOOKS.value,
         {"asyncUpdateRequired": True}
     )
@@ -108,7 +109,7 @@ async def bulk_update_book_ratings() -> BulkRecordUpdateResponse:
     raiting_responses = await get_bulk_avg_reservation_rating_by_book_ids(books)
 
     bulk_results = []
-    for rating_response in rating_responses:
+    for rating_response in raiting_responses:
         result: UpdateResponse[Book] = await update_book(
             rating_response['_id'],
             {
@@ -124,9 +125,9 @@ async def bulk_update_book_ratings() -> BulkRecordUpdateResponse:
 
 
 async def get_bulk_avg_reservation_rating_by_book_ids(book_ids: List[str]) -> List[dict]:
-    pipeline = build_bulk_avg_value_pipeline("bookId", book_ids, "rating")
+    pipeline = MongoClient.build_bulk_avg_value_pipeline("bookId", book_ids, "rating")
 
-    cursor = await aggregate(DatabaseCollectionTypes.REVIEWS.value, pipeline)
+    cursor = await db_client.aggregate(DatabaseCollectionTypes.REVIEWS.value, pipeline)
     results = await cursor.to_list(length=1000)
 
     return results
