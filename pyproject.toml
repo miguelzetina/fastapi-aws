@@ -24,11 +24,14 @@ aws-cdk-aws-ecs = "^1.186.1"
 aws-cdk-aws-ec2 = "^1.186.1"
 aws-cdk-aws-ecs-patterns = "^1.186.1"
 pymongo = { version = "^4.3.3", extras = ["srv"] }
+
+[tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
 pytest-asyncio = "^0.20.3"
 coverage = "^7.0.2"
 httpx = "^0.23.2"
-
+pylint = "^2.15.9"
+black = "^22.12.0"
 
 [build-system]
 requires = ["poetry-core"]

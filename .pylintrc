@@ -1,0 +1,28 @@
+[MASTER]
+
+jobs=0
+limit-inference-results=100
+persistent=yes
+suggestion-mode=yes
+unsafe-load-any-extension=no
+
+[MESSAGES CONTROL]
+
+disable=print-statement,
+	parameter-unpacking,
+	unpacking-in-except,
+	old-raise-syntax,
+	using-cmp-argument,
+	eq-without-hash,
+	div-method,
+	idiv-method,
+	no-member,
+	rdiv-method,
+	exception-escape,
+	comprehension-escape,
+	import-error,
+	missing-module-docstring,
+	missing-function-docstring,
+	missing-class-docstring,
+	too-few-public-methods
+
