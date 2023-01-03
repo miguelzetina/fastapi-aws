@@ -6,4 +6,16 @@ services:
     restart: always
     ports:
       - 27017:27017
+  bookapi:
+    image: bookapi
+    restart: always
+    ports:
+      - 8000:8000
+    links:
+      - mongo
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DB_URL=mongodb://mongo:27017
+      - DB_NAME=bookapi
 

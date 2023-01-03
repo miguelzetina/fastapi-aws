@@ -26,5 +26,5 @@ WORKDIR /bookapi
 RUN poetry config virtualenvs.create false && poetry install
 
 # Entry Point
-CMD ["uvicorn", "main:app"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
 
