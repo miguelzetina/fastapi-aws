@@ -6,8 +6,9 @@ from src.config import settings
 
 app = cdk.App()
 
-ContainerizedGraphQLAPIStack(app, "ContainerizedGraphQLAPIStack",
-                             env=cdk.Environment(account=settings.AWS_ACCOUNT,
-                                                 region=settings.AWS_REGION))
+ContainerizedGraphQLAPIStack(
+    app,
+    "ContainerizedGraphQLAPIStack",
+    env=cdk.Environment(account=settings.AWS_ACCOUNT, region=settings.AWS_REGION),
+)
 app.synth()
-

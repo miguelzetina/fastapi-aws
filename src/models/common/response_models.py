@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from dataclasses_json import LetterCase, dataclass_json
 
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 @dataclass_json(letter_case=LetterCase.CAMEL)
@@ -34,12 +34,14 @@ class CreateResponse(Generic[T], BaseResponse):
     result: Optional[T]
     record_id: Optional[str] = None
 
+
 @dataclass_json(letter_case=LetterCase.CAMEL)
 @dataclass
 @strawberry.type
 class UpdateResponse(Generic[T], BaseResponse):
     result: Optional[T]
     record_id: Optional[str] = None
+
 
 @dataclass_json(letter_case=LetterCase.CAMEL)
 @dataclass

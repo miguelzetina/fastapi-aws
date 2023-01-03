@@ -106,4 +106,3 @@ async def test_create_book_failure(mock_create_record):
 
     assert create_response is not None
     assert create_response.success is False
-

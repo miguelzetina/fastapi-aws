@@ -42,4 +42,3 @@ def mock_delete_record(mocker):
         "src.clients.db.MongoClient.get_and_create_record", side_effect=async_mock
     )
     return async_mock
-

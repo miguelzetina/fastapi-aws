@@ -12,4 +12,3 @@ from dataclasses_json import LetterCase, dataclass_json
 class HelloResponse:
     message: str = None
     timestamp: str = None
-

@@ -25,4 +25,3 @@ class Review:
     @property
     def id(self) -> strawberry.ID:
         return self._id
-

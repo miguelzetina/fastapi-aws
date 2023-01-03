@@ -10,8 +10,8 @@ from dataclasses_json import LetterCase, dataclass_json
 @strawberry.enum
 @dataclass_json(letter_case=LetterCase.CAMEL)
 class DatabaseCollectionTypes(Enum):
-    BOOKS = 'books'
-    REVIEWS = 'reviews'
+    BOOKS = "books"
+    REVIEWS = "reviews"
 
 
 @strawberry.type
@@ -56,4 +56,3 @@ class DeleteRecord:
 class BulkRecordUpdateResponse:
     update_responses: List[UpdateRecord]
     error_message: str = None
-

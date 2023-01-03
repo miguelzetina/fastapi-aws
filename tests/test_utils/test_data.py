@@ -22,7 +22,7 @@ def get_book_records() -> List[dict]:
             "rating": 4.166666666666667,
             "asyncUpdateRequired": False,
             "createdOn": datetime(2022, 2, 18, 10, 47, 28, 138000),
-            "lastUpdatedOn": datetime(2022, 3, 22, 16, 35, 37, 936000)
+            "lastUpdatedOn": datetime(2022, 3, 22, 16, 35, 37, 936000),
         },
         {
             "_id": ObjectId("620fdbb0cf1be3116b86ad78"),
@@ -69,4 +69,3 @@ def get_review_records() -> List[dict]:
             "book_id": "620fdbb0cf1be3116b86ad77",
         },
     ]
-

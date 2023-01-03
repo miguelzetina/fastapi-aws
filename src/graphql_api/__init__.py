@@ -3,12 +3,17 @@ import strawberry
 from strawberry.asgi import GraphQL
 from src.middlewares.authorization import RequestHeaderValidation
 from src.resolvers.books.resolve_books import (
-    resolve_create_book, resolve_get_book_by_id, resolve_get_book_by_isbn,
-    resolve_update_book, resolve_delete_book
+    resolve_create_book,
+    resolve_get_book_by_id,
+    resolve_get_book_by_isbn,
+    resolve_update_book,
+    resolve_delete_book,
 )
 from src.resolvers.reviews.resolve_reviews import (
-    resolve_create_review, resolve_get_review_by_id, resolve_update_review,
-    resolve_delete_review
+    resolve_create_review,
+    resolve_get_review_by_id,
+    resolve_update_review,
+    resolve_delete_review,
 )
 
 
@@ -16,12 +21,10 @@ from src.resolvers.reviews.resolve_reviews import (
 class Query:
     # Book Queries
     get_book_by_id = strawberry.field(
-        resolve_get_book_by_id,
-        permission_classes=[RequestHeaderValidation]
+        resolve_get_book_by_id, permission_classes=[RequestHeaderValidation]
     )
     get_book_by_isbn = strawberry.field(
-        resolve_get_book_by_isbn,
-        permission_classes=[RequestHeaderValidation]
+        resolve_get_book_by_isbn, permission_classes=[RequestHeaderValidation]
     )
     # Review Queries
     get_review_by_id = strawberry.field(resolve_get_review_by_id)
@@ -31,16 +34,13 @@ class Query:
 class Mutation:
     # Book Create, Update, and Delete Mutations
     create_book = strawberry.mutation(
-        resolve_create_book,
-        permission_classes=[RequestHeaderValidation]
+        resolve_create_book, permission_classes=[RequestHeaderValidation]
     )
     update_book = strawberry.mutation(
-        resolve_update_book,
-        permission_classes=[RequestHeaderValidation]
+        resolve_update_book, permission_classes=[RequestHeaderValidation]
     )
     delete_book = strawberry.mutation(
-        resolve_delete_book,
-        permission_classes=[RequestHeaderValidation]
+        resolve_delete_book, permission_classes=[RequestHeaderValidation]
     )
     # Review Create, Update, and Delete Mutations
     create_review = strawberry.mutation(resolve_create_review)
@@ -49,5 +49,7 @@ class Mutation:
 
 
 schema = strawberry.Schema(query=Query(), mutation=Mutation())
-graphql_app = GraphQL(schema, debug=True,)
-
+graphql_app = GraphQL(
+    schema,
+    debug=True,
+)

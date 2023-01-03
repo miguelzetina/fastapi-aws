@@ -12,8 +12,8 @@ class ServerSettings(BaseSettings):
 
 
 class DatabaseSettings(BaseSettings):
-    DB_URL: str = ''
-    DB_NAME: str = ''
+    DB_URL: str = ""
+    DB_NAME: str = ""
 
 
 class InfrastructureSettings(BaseSettings):
@@ -22,12 +22,12 @@ class InfrastructureSettings(BaseSettings):
     ENV_TYPE: str = "dev"
 
 
-class Settings(CommonSettings, DatabaseSettings, ServerSettings,
-               InfrastructureSettings):
+class Settings(
+    CommonSettings, DatabaseSettings, ServerSettings, InfrastructureSettings
+):
     class Config:
-        env_file = '.env'
-        env_file_encoding = 'utf-8'
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 
 settings = Settings()
-

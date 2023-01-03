@@ -24,4 +24,3 @@ class Author:
     first_name: str
     last_name: str
     middle_name: Optional[str] = None
-
