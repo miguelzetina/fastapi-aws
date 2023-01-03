@@ -47,4 +47,17 @@ class ContainerizedGraphQLAPIStack(Stack):
             public_load_balancer=True
         )
 
+        sg = _ec2.SecurityGroup(
+            self,
+            id=f"{api_resource_prefix}sg-1",
+            vpc=vpc,
+            allow_all_outbound=True,
+            description=f"{api_resource_prefix}-security-group"
+        )
+
+        sg.add_ingress_rule(
+            peer=_ec2.Peer.ipv4("0.0.0.0/32"),
+            connection=_ec2.Port.tcp(443),
+            description="https-local",
+        )
 
