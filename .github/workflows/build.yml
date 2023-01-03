@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: 3.10.9
       - name: Install Global Dependencies
-        run: pip install -U pip && pip install poetry whell
+        run: pip install -U pip && pip install poetry wheel
       - run: python -m venv .venv && source .venv/bin/activate
       - name: Install Project Dependencies
         run: poetry env info && poetry install
