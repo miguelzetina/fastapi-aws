@@ -7,7 +7,7 @@ from strawberry.types import Info
 class RequestHeaderValidation(BasePermission):
     message = "Unauthorized request attempt. Missing required request header(s)."
 
-    def has_permissions(self, source: typing.Any, info: Info, **kwargs) -> bool:
+    def has_permission(self, source: typing.Any, info: Info, **kwargs) -> bool:
         return self.has_valid_enforced_headers(info.context["request"].headers)
 
     def has_valid_enforced_headers(self, headers: dict):
