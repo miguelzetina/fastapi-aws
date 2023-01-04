@@ -1,7 +1,6 @@
 import strawberry
 
 from strawberry.asgi import GraphQL
-from src.middlewares.authorization import RequestHeaderValidation
 from src.resolvers.books.resolve_books import (
     resolve_create_book,
     resolve_get_book_by_id,
@@ -20,12 +19,8 @@ from src.resolvers.reviews.resolve_reviews import (
 @strawberry.type
 class Query:
     # Book Queries
-    get_book_by_id = strawberry.field(
-        resolve_get_book_by_id, permission_classes=[RequestHeaderValidation]
-    )
-    get_book_by_isbn = strawberry.field(
-        resolve_get_book_by_isbn, permission_classes=[RequestHeaderValidation]
-    )
+    get_book_by_id = strawberry.field(resolve_get_book_by_id)
+    get_book_by_isbn = strawberry.field(resolve_get_book_by_isbn)
     # Review Queries
     get_review_by_id = strawberry.field(resolve_get_review_by_id)
 
@@ -33,15 +28,9 @@ class Query:
 @strawberry.type
 class Mutation:
     # Book Create, Update, and Delete Mutations
-    create_book = strawberry.mutation(
-        resolve_create_book, permission_classes=[RequestHeaderValidation]
-    )
-    update_book = strawberry.mutation(
-        resolve_update_book, permission_classes=[RequestHeaderValidation]
-    )
-    delete_book = strawberry.mutation(
-        resolve_delete_book, permission_classes=[RequestHeaderValidation]
-    )
+    create_book = strawberry.mutation(resolve_create_book)
+    update_book = strawberry.mutation(resolve_update_book)
+    delete_book = strawberry.mutation(resolve_delete_book)
     # Review Create, Update, and Delete Mutations
     create_review = strawberry.mutation(resolve_create_review)
     update_review = strawberry.mutation(resolve_update_review)
